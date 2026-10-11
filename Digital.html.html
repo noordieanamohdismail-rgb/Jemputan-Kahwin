@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemputan Perkahwinan - Dieana & Amirul</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel for elegance, Cormorant Garamond for romantic serif, Plus Jakarta Sans for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        smokeBlue: '#4A6572',
+                        smokeLight: '#E8EFF2',
+                        smokeDark: '#2C3E50',
+                        ivory: '#FAF9F6',
+                        pearl: '#FDFBF7',
+                        gold: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        goldDark: '#AA8C2C'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        cormorant: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+            color: #2C3E50;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .cinzel-font {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #AA8C2C 0%, #D4AF37 50%, #F3E5AB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-image: linear-gradient(to bottom right, #D4AF37, #F3E5AB, #AA8C2C) 1;
+        }
+        .envelope-flap {
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top;
+        }
+        .envelope-open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .envelope-container {
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Custom Islamic Geometric SVG Background Pattern */
+        .islamic-pattern {
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #FAF9F6 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.08;
+        }
+    </style>
+</head>
+<body class="bg-ivory text-smokeDark antialiased selection:bg-gold selection:text-white">
+
+    <!-- Envelope Opening Overlay -->
+    <div id="envelope-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-smokeDark/90 backdrop-blur-md px-4 transition-all duration-1000">
+        <div class="relative w-full max-w-md bg-pearl rounded-2xl shadow-2xl overflow-hidden border border-gold/40 text-center p-8 transform transition-transform duration-700 envelope-container">
+            <!-- Decorative Islamic Corner Borders -->
+            <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-gold pointer-events-none"></div>
+            <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-gold pointer-events-none"></div>
+            <div class="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-gold pointer-events-none"></div>
+            <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-gold pointer-events-none"></div>
+
+            <div class="my-6">
+                <span class="inline-block p-3 rounded-full bg-smokeLight/60 text-gold mb-3 shadow-inner">
+                    <i class="fa-solid fa-ring text-3xl"></i>
+                </span>
+                <p class="cinzel-font text-xs uppercase tracking-widest text-smokeBlue mb-1">Undangan Perkahwinan</p>
+                <h2 class="cinzel-font text-2xl font-bold text-smokeDark mb-3">Dieana & Amirul</h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto mb-4"></div>
+                <p class="serif-font italic text-lg text-smokeDark/80 mb-6">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..."</p>
+                
+                <div class="bg-smokeLight/40 rounded-xl p-3 mb-6 text-xs text-smokeDark/70 border border-gold/20">
+                    <i class="fa-solid fa-music text-gold mr-1.5"></i> Muzik latar romantik akan dimainkan selepas jemputan dibuka.
+                </div>
+
+                <button id="open-invitation-btn" class="w-full py-3.5 px-6 bg-gradient-to-r from-smokeBlue to-smokeDark text-ivory font-cinzel tracking-wider rounded-xl shadow-lg hover:shadow-xl hover:from-smokeDark hover:to-smokeBlue transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <span>Buka Jemputan</span>
+                    <i class="fa-solid fa-envelope-open text-gold group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Background Audio (Romantic Islamic Instrumental) -->
+    <audio id="bg-audio" loop preload="auto">
+        <!-- Using a reliable royalty-free peaceful instrumental audio source -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3?filename=arabic-peace-106517.mp3" type="audio/mpeg">
+        Pelayar anda tidak menyokong elemen audio.
+    </audio>
+
+    <!-- Floating Audio Control Button (Visible after opening) -->
+    <div id="audio-control-container" class="fixed bottom-5 right-5 z-40 hidden flex flex-col gap-2">
+        <button id="scroll-top-btn" class="w-12 h-12 rounded-full bg-ivory text-smokeDark border-2 border-gold flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+            <i class="fa-solid fa-arrow-up text-lg text-gold"></i>
+        </button>
+        <button id="toggle-audio-btn" class="w-12 h-12 rounded-full bg-smokeDark text-gold border-2 border-gold flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+            <i id="audio-icon" class="fa-solid fa-music text-lg animate-spin" style="animation-duration: 4s;"></i>
+        </button>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000">
+        
+        <!-- Hero Header Section -->
+        <header id="hero-section" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-pearl via-smokeLight/30 to-pearl overflow-hidden">
+            <!-- Floral & Geometric Decorative Top Border -->
+            <div class="absolute top-4 inset-x-0 flex justify-center opacity-70">
+                <div class="w-48 h-12 border-t-2 border-b-2 border-gold/50 flex items-center justify-center">
+                    <span class="cinzel-font text-xs text-gold tracking-widest px-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 max-w-2xl mx-auto mt-6">
+                <!-- Top Badge -->
+                <span class="inline-block py-1 px-4 rounded-full bg-smokeBlue/10 text-smokeBlue cinzel-font text-xs tracking-widest mb-6 border border-smokeBlue/20">
+                    Walimatulurus: Majlis Akad Nikah &amp; Kesyukuran
+                </span>
+
+                <!-- Arabic Basmalah -->
+                <p class="font-arabic text-2xl text-gold mb-6">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+
+                <p class="serif-font text-lg text-smokeDark/80 mb-4">Dengan penuh kesyukuran ke hadrat Ilahi, kami menjemput Dato’ / Datin / Tuan / Puan / Encik / Cik sekeluarga ke Majlis Akad Nikah &amp; Kesyukuran anakanda tercinta:</p>
+
+                <!-- Couple Names -->
+                <div class="my-8 py-6 border-y border-gold/30">
+                    <h1 class="cinzel-font text-3xl md:text-5xl font-bold text-smokeDark mb-3 tracking-wide">
+                        Noor Dieana
+                    </h1>
+                    <p class="text-sm text-smokeDark/60 font-medium">binti Mohd Ismail</p>
+                    <p class="serif-font italic text-2xl text-gold my-2">&amp;</p>
+                    <h1 class="cinzel-font text-3xl md:text-5xl font-bold text-smokeDark mt-3 tracking-wide">
+                        Muhammad Amirul Asraf
+                    </h1>
+                    <p class="text-sm text-smokeDark/60 font-medium mt-1">bin Rosli</p>
+                </div>
+
+                <!-- Parents Invitation details -->
+                <div class="space-y-2 mb-8 text-sm md:text-base text-smokeDark/80">
+                    <p class="font-medium text-smokeBlue">Tuan Rumah:</p>
+                    <p class="serif-font text-xl font-semibold text-smokeDark">Mohd Ismail bin Nawawi &amp; Asiah binti Osman</p>
+                </div>
+
+                <!-- Scroll Down Indicator -->
+                <a href="#details-section" class="inline-flex flex-col items-center text-smokeBlue hover:text-gold transition-colors mt-4 group">
+                    <span class="text-xs uppercase cinzel-font tracking-widest mb-1 text-smokeDark/70 group-hover:text-gold">Aturcara &amp; Lokasi</span>
+                    <i class="fa-solid fa-chevron-down text-lg animate-bounce text-gold"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- Event Details & Countdown Section -->
+        <section id="details-section" class="py-20 px-6 bg-pearl relative">
+            <div class="absolute inset-0 islamic-pattern pointer-events-none"></div>
+            
+            <div class="max-w-4xl mx-auto relative z-10">
+                
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="cinzel-font text-3xl font-bold text-smokeDark mb-2">Majlis Akad Nikah &amp; Kesyukuran</h2>
+                    <div class="w-20 h-0.5 bg-gold mx-auto"></div>
+                </div>
+
+                <!-- Countdown Timer Card -->
+                <div class="bg-gradient-to-br from-smokeDark to-smokeBlue text-ivory rounded-3xl p-8 shadow-2xl mb-12 border border-gold/30 text-center">
+                    <h3 class="cinzel-font text-gold text-sm uppercase tracking-widest mb-6">Menghitung Hari Menuju Bahagia</h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-xl mx-auto">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+                            <span id="days" class="cinzel-font text-3xl md:text-4xl font-bold text-gold">00</span>
+                            <p class="text-xs uppercase tracking-wider text-ivory/80 mt-1">Hari</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+                            <span id="hours" class="cinzel-font text-3xl md:text-4xl font-bold text-gold">00</span>
+                            <p class="text-xs uppercase tracking-wider text-ivory/80 mt-1">Jam</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+                            <span id="minutes" class="cinzel-font text-3xl md:text-4xl font-bold text-gold">00</span>
+                            <p class="text-xs uppercase tracking-wider text-ivory/80 mt-1">Minit</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+                            <span id="seconds" class="cinzel-font text-3xl md:text-4xl font-bold text-gold">00</span>
+                            <p class="text-xs uppercase tracking-wider text-ivory/80 mt-1">Saat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Information Cards Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    
+                    <!-- Date & Time Card -->
+                    <div class="bg-ivory rounded-3xl p-8 shadow-xl border border-gold/30 flex flex-col items-center text-center relative overflow-hidden group hover:border-gold transition-all">
+                        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-smokeLight rounded-full opacity-40 pointer-events-none"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-smokeBlue/10 text-smokeBlue flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-calendar-days text-gold"></i>
+                        </div>
+                        <h4 class="cinzel-font text-xl font-bold text-smokeDark mb-3">Tarikh &amp; Masa</h4>
+                        <p class="serif-font text-xl font-bold text-smokeBlue mb-2">Sabtu, 12 Disember 2026</p>
+                        <p class="text-smokeDark/80 font-medium">10:00 Pagi – 3:00 Petang</p>
+                        <div class="mt-4 pt-4 border-t border-smokeLight w-full space-y-1">
+                            <p class="text-xs text-smokeBlue font-semibold uppercase tracking-wider">Tentatif Ringkas</p>
+                            <p class="text-xs text-smokeDark/70"><strong>10:00 Pagi:</strong> Ketibaan Tetamu &amp; Majlis Akad Nikah</p>
+                            <p class="text-xs text-smokeDark/70"><strong>11:30 Pagi - 3:00 Petang:</strong> Jamuan Kesyukuran</p>
+                        </div>
+                    </div>
+
+                    <!-- Venue & Location Card -->
+                    <div class="bg-ivory rounded-3xl p-8 shadow-xl border border-gold/30 flex flex-col items-center text-center relative overflow-hidden group hover:border-gold transition-all">
+                        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-smokeLight rounded-full opacity-40 pointer-events-none"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-smokeBlue/10 text-smokeBlue flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-house-chimney-window text-gold"></i>
+                        </div>
+                        <h4 class="cinzel-font text-xl font-bold text-smokeDark mb-3">Lokasi Majlis</h4>
+                        <p class="serif-font text-xl font-bold text-smokeBlue mb-1">Rumah Pengantin Perempuan</p>
+                        <p class="text-smokeDark/80 text-sm max-w-xs mx-auto mb-6">No. 61, Blok 5, Felda Chini 2, Pahang</p>
+                        
+                        <!-- Google Maps Navigation Button -->
+                        <a href="https://maps.google.com/?q=3.381881,102.940102" target="_blank" class="mt-auto py-2.5 px-6 bg-smokeDark text-ivory rounded-xl font-medium text-sm flex items-center gap-2 hover:bg-gold hover:text-smokeDark transition-colors shadow-md">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>Buka Google Maps</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Wishes & WhatsApp Share Section -->
+        <section class="py-20 px-6 bg-gradient-to-t from-pearl via-smokeLight/20 to-pearl relative">
+            <div class="max-w-2xl mx-auto text-center relative z-10">
+                <span class="inline-block p-3 rounded-full bg-smokeBlue/10 text-gold mb-4">
+                    <i class="fa-solid fa-hands-praying text-2xl"></i>
+                </span>
+                <h3 class="cinzel-font text-2xl md:text-3xl font-bold text-smokeDark mb-4">Doa Restu &amp; Ucapan</h3>
+                <p class="serif-font text-lg text-smokeDark/80 mb-8">
+                    "Ya Allah, berkatilah majlis perkahwinan ini, limpahkanlah keberkatan kepada kedua mempelai ini dan satukanlah hati mereka dalam kebaikan."
+                </p>
+
+                <!-- WhatsApp Share Card -->
+                <div class="bg-ivory rounded-3xl p-8 shadow-xl border border-gold/30">
+                    <h4 class="cinzel-font text-lg font-bold text-smokeDark mb-2">Kongsikan Undangan</h4>
+                    <p class="text-sm text-smokeDark/70 mb-6">Jemput ahli keluarga dan sahabat handai hadir bersama memeriahkan majlis dengan berkongsi pautan ini.</p>
+                    
+                    <button id="share-whatsapp-btn" class="w-full py-3.5 px-6 bg-[#25D366] text-white font-medium rounded-xl shadow-lg hover:bg-[#20ba5a] transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Kongsi ke WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="py-10 px-6 bg-smokeDark text-ivory text-center border-t border-gold/20">
+            <div class="max-w-xl mx-auto">
+                <p class="cinzel-font text-lg font-bold gold-gradient-text mb-2">Dieana &amp; Amirul</p>
+                <p class="text-xs text-ivory/60 mb-4">Terima kasih atas kehadiran dan doa restu anda.</p>
+                <div class="w-12 h-0.5 bg-gold mx-auto mb-4"></div>
+                <p class="text-[11px] text-ivory/40">&copy; 2026 Digital Wedding Invitation. Hak Cipta Terpelihara.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Vanilla JavaScript Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const envelopeOverlay = document.getElementById('envelope-overlay');
+            const openBtn = document.getElementById('open-invitation-btn');
+            const mainContent = document.getElementById('main-content');
+            const detailsSection = document.getElementById('details-section');
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            const bgAudio = document.getElementById('bg-audio');
+            const audioControlContainer = document.getElementById('audio-control-container');
+            const toggleAudioBtn = document.getElementById('toggle-audio-btn');
+            const audioIcon = document.getElementById('audio-icon');
+            
+            let isAudioPlaying = false;
+
+            openBtn.addEventListener('click', function() {
+                // Add open animation class to envelope container
+                const envelopeContainer = envelopeOverlay.querySelector('.envelope-container');
+                envelopeContainer.classList.add('scale-105', 'opacity-0');
+                envelopeOverlay.classList.add('opacity-0', 'pointer-events-none');
+                
+                setTimeout(() => {
+                    envelopeOverlay.style.display = 'none';
+                    mainContent.classList.remove('opacity-0');
+                    mainContent.classList.add('fade-in-up');
+                    audioControlContainer.classList.remove('hidden');
+
+                    // Smooth scroll auto down to details section
+                    setTimeout(() => {
+                        detailsSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 600);
+
+                }, 800);
+
+                // Play background audio safely
+                bgAudio.play().then(() => {
+                    isAudioPlaying = true;
+                }).catch(error => {
+                    console.log("Audio autoplay restricted by browser:", error);
+                    isAudioPlaying = false;
+                    audioIcon.classList.remove('fa-spin', 'fa-music');
+                    audioIcon.classList.add('fa-volume-xmark');
+                });
+            });
+
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            toggleAudioBtn.addEventListener('click', function() {
+                if (isAudioPlaying) {
+                    bgAudio.pause();
+                    isAudioPlaying = false;
+                    audioIcon.classList.remove('fa-spin', 'fa-music');
+                    audioIcon.classList.add('fa-volume-xmark');
+                } else {
+                    bgAudio.play().then(() => {
+                        isAudioPlaying = true;
+                        audioIcon.classList.remove('fa-volume-xmark');
+                        audioIcon.classList.add('fa-music', 'fa-spin');
+                    }).catch(e => console.log(e));
+                }
+            });
+
+            const targetDate = new Date('December 12, 2026 10:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference > 0) {
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                    document.getElementById('days').innerText = String(days).padStart(2, '0');
+                    document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+                } else {
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                }
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            const shareWhatsAppBtn = document.getElementById('share-whatsapp-btn');
+            shareWhatsAppBtn.addEventListener('click', function() {
+                const shareText = encodeURIComponent("Jemputan Walimatulurus Noor Dieana & Muhammad Amirul Asraf pada 12 Disember 2026. Sila layari pautan ini untuk butiran majlis: " + window.location.href);
+                window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
